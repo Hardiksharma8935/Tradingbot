@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JARVIS Crypto Terminal</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        body {
+            background-color: #0d1117;
+            color: #c9d1d9;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 { color: #58a6ff; text-align: center; }
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .card {
+            background-color: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .card:hover { border-color: #58a6ff; box-shadow: 0 0 10px rgba(88, 166, 255, 0.2); }
+        .card h3 { margin: 0 0 10px 0; color: #79c0ff; }
+        .btn {
+            background-color: #238636;
+            color: white;
+            border: none;
+            padding: 15px;
+            width: 100%;
+            border-radius: 8px;
+            font-size: 16px;
+            margin-top: 30px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>JARVIS TERMINAL</h1>
+    <p style="text-align: center; color: #8b949e;">Select a module to initiate analysis.</p>
+
+    <div class="grid">
+        <div class="card" onclick="sendData('news')">
+            <h3>📰 News & Macro</h3>
+            <p style="font-size: 12px;">Market sentiment & catalysts</p>
+        </div>
+        <div class="card" onclick="sendData('futures')">
+            <h3>📈 Futures Setup</h3>
+            <p style="font-size: 12px;">Leverage & entry zones</p>
+        </div>
+        <div class="card" onclick="sendData('risk')">
+            <h3>🛡️ Risk Manager</h3>
+            <p style="font-size: 12px;">Capital protection</p>
+        </div>
+        <div class="card" onclick="sendData('portfolio')">
+            <h3>💼 Portfolio</h3>
+            <p style="font-size: 12px;">Balance & allocation</p>
+        </div>
+    </div>
+
+    <button class="btn" onclick="tg.close()">Close Terminal</button>
+
+    <script>
+        let tg = window.Telegram.WebApp;
+        tg.expand();
+
+        function sendData(module) {
+            let command = "";
+            if (module === 'news') command = "Give me the latest crypto news and market sentiment.";
+            if (module === 'futures') command = "Find a futures trading setup and explain the risk.";
+            if (module === 'risk') command = "Calculate my risk parameters for a new trade.";
+            if (module === 'portfolio') command = "Analyze portfolio diversification strategy.";
+            
+            tg.sendData(command); 
+        }
+    </script>
+</body>
+</html>
