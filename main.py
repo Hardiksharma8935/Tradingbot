@@ -12,7 +12,7 @@ TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 
 # APNA GITHUB PAGES URL YAHAN DAALO
-MINI_APP_URL = "https://YOUR_GITHUB_USERNAME.github.io/YOUR_REPO_NAME/" 
+MINI_APP_URL = "[https://hardiksharma8935.github.io/tradingbot/](https://hardiksharma8935.github.io/tradingbot/)" 
 
 # Initialize Groq
 client = Groq(api_key=GROQ_API_KEY)
